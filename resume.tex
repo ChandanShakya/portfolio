@@ -1,104 +1,227 @@
-\documentclass{resume} % Use the custom resume.cls style
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reman Buddhacharya | Softwawre Quality Assurance </title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+    }
 
-\usepackage[left=0.4 in,top=0.4in,right=0.4 in,bottom=0.4in]{geometry} % Document margins
-\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}} 
-\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
-\name{Reman Buddhacharya} % Your name
-% You can merge both of these into a single line, if you do not have a website.
-\address{ +977-9761783411\\ Dallu, Kathamndu, Nepal 44600} 
-\address{\href{mailto:remanbuddhacharya@gmail.com}{remanbuddhacharya@gmail.com} \\ \href{https://linkedin.com/in/reman-buddhacharya}{www.linkedin.com/in/reman-buddhacharya} \\ \href{https://remanbuddhacharya.com.np}{remanbuddhacharya.com.np}}  %
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-\begin{document}
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-%----------------------------------------------------------------------------------------
-%	OBJECTIVE
-%----------------------------------------------------------------------------------------
+    a { color: var(--accent); text-decoration: none; }
 
-\begin{rSection}{OBJECTIVE}
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+    }
 
-{Computer Science student exploring QA and automation, seeking software developer internship opportunities for Summer 2025.}
+    /* HERO */
+    .hero {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
 
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
 
-\end{rSection}
-%----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%----------------------------------------------------------------------------------------
+    .hero h2 {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin: 0.5rem 0 1.5rem;
+    }
 
-\begin{rSection}{Education}
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+    }
 
-{\bf Bachelor of Computer Applications}, National College of Computer Studies, Kathmandu \hfill {Expected 2026}\\
-Relevant Coursework: Data Structures \& Algorithms, Database Systems, Web Development, Software Engineering.
-%Minor in Linguistics \smallskip \\
-%Member of Eta Kappa Nu \\
-%Member of Upsilon Pi Epsilon \\
+    .cta {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
+    .btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      color: var(--bg);
+      background: var(--accent);
+    }
 
-\end{rSection}
+    .btn.outline {
+      background: transparent;
+      color: var(--accent);
+    }
 
-%----------------------------------------------------------------------------------------
-% TECHINICAL STRENGTHS	
-%----------------------------------------------------------------------------------------
-\begin{rSection}{SKILLS}
+    /* SECTION */
+    section { margin-bottom: 4rem; }
 
-\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+    section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+    }
 
-Programming Languages & PHP, JavaScript, Python, SQL, HTML, CSS \\
-Testing \& Automation & Playwright, Test Automation Frameworks \\
-DevOps \& Tools & Git, GitHub Actions, CI/CD, MySQL, PostgreSQL, Figma \\
-Soft Skills & Problem-solving, Team collaboration, Communication, Test Planning \\
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
 
+    .card {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid #1f2933;
+    }
 
-\end{tabular}\\
-\end{rSection}
+    .card h4 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
 
-\begin{rSection}{EXPERIENCE}
+    .card ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
 
-\textbf{Full Stack Developer (Academic Project)} \hfill
- \begin{itemize}
-    \itemsep -3pt {}
-     \item Built comprehensive Gym Management System using PHP and MySQL with member tracking features.
-     \item Developed Smart Expense Tracker with analytics achieving user satisfaction in testing.
-    \item Collaborated on community projects and maintained multiple repositories on GitHub. 
-    
- \end{itemize}
- \end{rSection}
+    .card ul li {
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
 
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE SECTION
-%----------------------------------------------------------------------------------------
+    /* SKILLS */
+    .skills span {
+      display: inline-block;
+      background: #1f2937;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      margin: 0.3rem;
+      font-size: 0.85rem;
+    }
 
-\begin{rSection}{PROJECTS}
-\vspace{-1.25em}
-\item \textbf{Gym Management System} { Built comprehensive fitness center management application using PHP and MySQL. Features member registration, subscription management, and financial reporting with secure authentication. Designed intuitive admin dashboard for streamlined operations. \href{https://github.com/RemonBuddhacharya/GymManagement}{(Github)}}
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      border-top: 1px solid #1f2937;
+    }
 
-\item \textbf{Kharcha Track} {Smart Expense Tracker. Advanced personal finance management application with intelligent insights built using PHP framework. Features budget planning, expense categorization, and financial goal tracking with dynamic data visualization. 
-\href{https://github.com/RemonBuddhacharya/kharcha-track}{(Github)}}
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
 
-\item \textbf{E-commerce Test Automation Framework} {Developed a comprehensive test automation framework using Playwright and JavaScript for an e-commerce platform. Implemented data-driven testing with JSON fixtures, and CI/CD pipeline using GitHub Actions. Features include automated testing of user authentication, shopping cart operations, and product search functionality with parallel test execution capabilities. \href{https://github.com/RemonBuddhacharya/Ultima_QA}{(Github)}}
+  <div class="container">
 
-\end{rSection}
+    <div class="hero">
+      <h1>REMAN BUDDHACHARYA</h1>
+      <h2>QUALITY ASSURANCE ENGINEER</h2>
+      <p>
+        I ensure web applications are reliable, secure, and production-ready through
+        manual testing, automation, and CI/CD validation. I break products before users do.
+      </p>
+      <div class="cta">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="resume.pdf" class="btn outline">Download CV</a>
+      </div>
+    </div>
 
+    <section>
+      <h3>Core Skills</h3>
+      <div class="skills">
+        <span>Manual Testing</span>
+        <span>Test Case Design</span>
+        <span>Regression Testing</span>
+        <span>Playwright</span>
+        <span>JavaScript</span>
+        <span>API Testing</span>
+        <span>CI/CD</span>
+        <span>GitHub Actions</span>
+        <span>SQL</span>
+      </div>
+    </section>
 
-%----------------------------------------------------------------------------------------
-\begin{rSection}{Extra-Curricular Activities} 
-\begin{itemize}
-    \item 	Active contributor to open-source projects on GitHub with multiple repositories showcasing web development skills and collaboration with other developers in the community.
+    <section id="projects">
+      <h3>Projects</h3>
+      <div class="grid">
 
-    
-    \item	Participate in local developer meetups and coding workshops to stay current with latest web development trends and technologies.
-\end{itemize}
+        <div class="card">
+          <h4>E-commerce Test Automation</h4>
+          <p>Automated QA framework for an e-commerce platform.</p>
+          <ul>
+            <li>✔ Automated auth, cart, search, checkout</li>
+            <li>✔ Data-driven testing with JSON</li>
+            <li>✔ CI/CD integration via GitHub Actions</li>
+          </ul>
+          <a href="https://github.com/RemonBuddhacharya/Ultima_QA">View on GitHub</a>
+        </div>
 
+        <div class="card">
+          <h4>Kharcha Track</h4>
+          <p>Smart expense tracking application.</p>
+          <ul>
+            <li>✔ Manual testing of finance workflows</li>
+            <li>✔ Edge-case validation for calculations</li>
+            <li>✔ DB verification (MySQL)</li>
+          </ul>
+          <a href="https://github.com/RemonBuddhacharya/kharcha-track">View on GitHub</a>
+        </div>
 
-\end{rSection}
+        <div class="card">
+          <h4>Gym Management System</h4>
+          <p>Fitness center management web app.</p>
+          <ul>
+            <li>✔ Tested member & subscription flows</li>
+            <li>✔ Auth & role-based access validation</li>
+            <li>✔ UI & data integrity checks</li>
+          </ul>
+          <a href="https://github.com/RemonBuddhacharya/GymManagement">View on GitHub</a>
+        </div>
 
-%----------------------------------------------------------------------------------------
-\begin{rSection}{Leadership} 
-\begin{itemize}
-    \item Project Lead for multiple personal development projects, successfully managing them from conception to deployment while maintaining high code quality standards and user satisfaction.
-\end{itemize}
+      </div>
+    </section>
 
+    <section>
+      <h3>Contact</h3>
+      <p>Email: remanbuddhacharya@gmail.com</p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/reman-buddhacharya">linkedin.com/in/reman-buddhacharya</a></p>
+      <p>Kathmandu, Nepal</p>
+    </section>
 
-\end{rSection}
+  </div>
 
+  <footer>
+    © 2025 Reman Buddhacharya · Quality Assurance Engineer
+  </footer>
 
-\end{document}
+</body>
+</html>

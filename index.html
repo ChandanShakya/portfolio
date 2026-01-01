@@ -1,58 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reman Buddhacharya - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reman Buddhacharya</title>
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <header>
-        <h1>Reman Buddhacharya</h1>
-        <p>Full Stack Developer | Quality Assurance</p>
-    </header>
 
-    <section class="section">
-        <h2>About</h2>
-        <p>Computer Science student at National College of Computer Studies, exploring QA and automation. Passionate about building robust web applications and automated testing solutions.</p>
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>REMAN BUDDHACHARYA</h1>
+      <h2>SOFTWARE QUALITY ASSURANCE </h2>
+      <p>
+        I break systems before users do. <br>
+        Preventing critical bugs and
+        system failures through rigorous manual, automation, and API validation and
+        of web applications ensuring they are secure, reliable, and production ready.
+      </p>
+      <div class="cta">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="resume.pdf" class="btn outline">Download CV</a>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <h3>Professional Experience</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="company">Center Of Research and Development</span>
+              <span class="role-title">Software Quality Assurance </span>
+            </div>
+            <div class="timeline-meta">
+              <span class="date">Intern → Full-time</span>
+            </div>
+            <ul>
+              <li>Performed functional, regression, API, and performance testing on production systems.</li>
+              <li>Designed and executed detailed test cases covering critical business workflows.</li>
+              <li>Identified, reported, and verified defects using Azure DevOps.</li>
+              <li>Worked closely with developers in Agile sprints to validate fixes and releases.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Gym Management System</h3>
-            <p>A comprehensive fitness center management application with member tracking, subscription management, and financial reporting.</p>
-            <a href="https://github.com/RemonBuddhacharya/GymManagement">View on GitHub</a>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h3>Projects Involved</h3>
+      <div class="project-list">
+        <div class="project-item">
+          <h4>KCCS: Kathmandu Clinic of Cusmatic Surgery</h4>
+          <div class="role">Healthcare Platform</div>
+          <ul>
+            <li>Validated end-to-end patient workflows including registration, appointment scheduling, and treatment
+              management.</li>
+            <li>Performed functional, regression, API, and load testing to ensure system stability under concurrent user
+              load.</li>
+            <li>Automated critical login and appointment booking flows using Cypress to reduce repetitive manual
+              testing.</li>
+          </ul>
         </div>
 
-        <div class="project">
-            <h3>Kharcha Track</h3>
-            <p>Smart expense tracker with budget planning, expense categorization, and financial goal tracking features.</p>
-            <a href="https://github.com/RemonBuddhacharya/kharcha-track">View on GitHub</a>
+        <div class="project-item">
+          <h4>NCRS: Nepal Cancer Relief Society</h4>
+          <div class="role">Donation & Membership Platform</div>
+          <ul>
+            <li>Tested authentication, role-based access control,
+              and admin workflows to ensure secure system usage.</li>
+            <li>Verified donation processing,
+              reporting accuracy, and transaction data integrity.</li>
+            <li>Performed regression testing before releases to
+              prevent financial and access-related defects.</li>
+          </ul>
         </div>
 
-        <div class="project">
-            <h3>E-commerce Test Automation</h3>
-            <p>Comprehensive test automation framework using Playwright and JavaScript with CI/CD integration.</p>
-            <a href="https://github.com/RemonBuddhacharya/Ultima_QA">View on GitHub</a>
+        <div class="project-item">
+          <h4>Billing System</h4>
+          <div class="role">Internal Financial Application</div>
+          <ul>
+            <li>Verified invoice creation, payment processing
+              and due amount calculations across user roles.</li>
+            <li>Conducted role-based permission testing to prevent
+              unauthorized financial access.</li>
+            <li>Performed cross-browser validation
+              to ensure consistent behavior across supported browsers.</li>
+          </ul>
         </div>
+
+        <div class="project-item">
+          <h4>Remittance System (Ongoing)</h4>
+          <div class="role">Financial Transaction Platform</div>
+          <ul>
+            <li>Tested remittance workflows, reconciliation, and failure handling.</li>
+            <li>Regression testing to ensure accuracy during continuous development.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-        <h2>Skills</h2>
-        <p><strong>Programming:</strong> PHP, JavaScript, Python, SQL, HTML, CSS</p>
-        <p><strong>Testing & Automation:</strong> Playwright, Test Automation Frameworks</p>
-        <p><strong>DevOps & Tools:</strong> Git, GitHub Actions, CI/CD, MySQL, PostgreSQL, Figma</p>
+    <!-- SKILLS -->
+    <section>
+      <h3>Testing Stack</h3>
+      <div class="skills-grid">
+        <!-- Category 1 -->
+        <div class="stack-card">
+          <div class="skill-category">
+            <h4>🔍 Core QA</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Manual Testing</span>
+              <span class="skill-tag">Test Case & Scenario Design</span>
+              <span class="skill-tag">Regression, Smoke & Sanity Testing</span>
+              <span class="skill-tag">Integration & Cross-browser Testing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="stack-card">
+          <div class="skill-category">
+            <h4>🤖 Automation</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Cypress (UI automation)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="stack-card">
+          <div class="skill-category">
+            <h4>⚡ API & Performance</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">API Testing (Postman, Swagger)</span>
+              <span class="skill-tag">Load & Performance Testing (JMeter)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="stack-card">
+          <div class="skill-category">
+            <h4>🛠️ Tools & Process</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Azure DevOps</span>
+              <span class="skill-tag">Agile / Scrum QA Process</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer class="section contact">
-        <h2>Contact</h2>
-        <p>
-            <a href="mailto:remanbuddhacharya@gmail.com">Email</a> |
-            <a href="https://linkedin.com/in/reman-buddhacharya">LinkedIn</a> |
-            <a href="https://remanbuddhacharya.com.np">Website</a>
-        </p>
-        <p>Dallu, Kathmandu, Nepal</p>
+    <!-- CONTACT -->
+    <section class="contact">
+      <h3>Contact</h3>
+      <p>Email: remanbuddhacharya@gmail.com</p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/reman-buddhacharya"
+          target="_blank">linkedin.com/in/reman-buddhacharya</a></p>
+    </section>
+
+    <footer>
+      © 2025 Reman Buddhacharya · Software Quality Assurance
     </footer>
+
+  </div>
+
 </body>
+
 </html>
