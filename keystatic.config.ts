@@ -1,7 +1,8 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
 
 // Local files in dev, GitHub commits in production (admin login via GitHub OAuth).
-const storage = import.meta.env.PROD
+// Run `KEYSTATIC_STORAGE=github npm run dev` once to create the GitHub App (see README).
+const storage = import.meta.env.PROD || import.meta.env.KEYSTATIC_STORAGE === 'github'
   ? ({ kind: 'github', repo: { owner: 'RemonBuddhacharya', name: 'portfolio' } } as const)
   : ({ kind: 'local' } as const);
 

@@ -38,12 +38,30 @@ keystatic.config.ts the admin schema
 
 ## Deploy (one-time setup)
 
-1. Push this repo to GitHub (`RemonBuddhacharya/portfolio`).
-2. Cloudflare dashboard → Workers & Pages → Create → Import a repository (Workers Builds, free).
-   Build command `npm run build`, deploy command `npx wrangler deploy`.
-   Add build variable `NODE_VERSION` = `22`.
-   (The adapter outputs a Worker with static assets, so the admin's server routes run on the free Workers plan.)
-3. Deploy once, then open `https://<your-site>.workers.dev/keystatic` and follow the prompt to create the GitHub App.
-   Copy the values it shows into the variables listed in `.env.example` (Settings → Variables and Secrets), then redeploy.
-4. Update `site` in `astro.config.mjs` to your real URL.
-5. Upload your CV in Site Settings → Resume. The "Download CV" button appears automatically.
+### 1. Create the GitHub App locally (gives you the 4 variables)
+```bash
+KEYSTATIC_STORAGE=github npm run dev
+```
+Open http://127.0.0.1:4321/keystatic, click **Create GitHub App**, and in "deployed URL" enter your final site URL
+(e.g. `https://reman-portfolio.<account>.workers.dev`). Approve on GitHub, then install the app on the `portfolio` repo.
+Keystatic writes `.env` with the four variables from `.env.example`. Never commit `.env`.
+
+### 2. Push to GitHub
+Push this branch and merge to `main` on `RemonBuddhacharya/portfolio`.
+
+### 3. Create the Cloudflare project
+Dashboard → Workers & Pages → Create → Import a repository (Workers Builds, free).
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Project name: `reman-portfolio`
+- Build variables: `NODE_VERSION` = `22`, plus the 4 Keystatic variables
+- Settings → Variables and Secrets (runtime): the same 4 Keystatic values. Make the client secret and `KEYSTATIC_SECRET` Secrets.
+
+`PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` is inlined at build time, so it must be a *build* variable.
+
+### 3b. Set the real URL
+Update `site` in `astro.config.mjs` to the final URL and push.
+
+### 4. Use it
+Open `<site>/keystatic`, sign in with GitHub, write a post, save. Cloudflare rebuilds in about a minute.
+Upload your CV in Site Settings → Resume.
