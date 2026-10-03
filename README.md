@@ -36,32 +36,49 @@ src/lib/content.ts  shared content helpers
 keystatic.config.ts the admin schema
 ```
 
-## Deploy (one-time setup)
+## Deploy
 
-### 1. Create the GitHub App locally (gives you the 4 variables)
-```bash
-KEYSTATIC_STORAGE=github npm run dev
-```
-Open http://127.0.0.1:4321/keystatic, click **Create GitHub App**, and in "deployed URL" enter your final site URL
-(e.g. `https://reman-portfolio.<account>.workers.dev`). Approve on GitHub, then install the app on the `portfolio` repo.
-Keystatic writes `.env` with the four variables from `.env.example`. Never commit `.env`.
+Hosting: Cloudflare Workers Builds (free). Cloudflare builds on every push to `main`, so no GitHub Actions workflow is needed.
+Final URL: https://remanbuddhacharya.com.np/. The admin commits to `ChandanShakya/portfolio` (set in `keystatic.config.ts`).
 
-### 2. Push to GitHub
-Push this branch and merge to `main` on `RemonBuddhacharya/portfolio`.
+### Variables
 
-### 3. Create the Cloudflare project
-Dashboard → Workers & Pages → Create → Import a repository (Workers Builds, free).
-- Build command: `npm run build`
-- Deploy command: `npx wrangler deploy`
-- Project name: `reman-portfolio`
-- Build variables: `NODE_VERSION` = `22`, plus the 4 Keystatic variables
-- Settings → Variables and Secrets (runtime): the same 4 Keystatic values. Make the client secret and `KEYSTATIC_SECRET` Secrets.
+| Name | Value | Where to set | Type |
+|---|---|---|---|
+| `NODE_VERSION` | `22` | Build variables | plain |
+| `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` | from `.env` | Build variables | plain |
+| `KEYSTATIC_GITHUB_CLIENT_ID` | from `.env` | Variables and Secrets (runtime) | plain |
+| `KEYSTATIC_GITHUB_CLIENT_SECRET` | from `.env` | Variables and Secrets (runtime) | secret |
+| `KEYSTATIC_SECRET` | from `.env` | Variables and Secrets (runtime) | secret |
 
-`PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` is inlined at build time, so it must be a *build* variable.
+You never invent these. Keystatic creates them (step 2).
 
-### 3b. Set the real URL
-Update `site` in `astro.config.mjs` to the final URL and push.
+### Order
 
-### 4. Use it
-Open `<site>/keystatic`, sign in with GitHub, write a post, save. Cloudflare rebuilds in about a minute.
-Upload your CV in Site Settings → Resume.
+1. **Get the code on `main`.** On GitHub, open a pull request from `chandan-astro-switch` into `main` in `ChandanShakya/portfolio` and merge it.
+2. **Create the GitHub App and the secrets (local, once).**
+   ```bash
+   git pull && npm install
+   KEYSTATIC_STORAGE=github npm run dev
+   ```
+   Open http://127.0.0.1:4321/keystatic → **Create GitHub App**.
+   - Deployed URL: `https://remanbuddhacharya.com.np`
+   - Approve on GitHub, then install the app on the `portfolio` repo only.
+   - Keystatic writes `.env` with the 4 Keystatic values. `.env` is git-ignored; never commit it.
+3. **Create the Cloudflare project.** Dashboard → Workers & Pages → Create → Import a repository → `ChandanShakya/portfolio`, branch `main`.
+   - Project name: `reman-portfolio` (must match `wrangler.jsonc`)
+   - Build command: `npm run build`
+   - Deploy command: `npx wrangler deploy`
+4. **Add the variables** from the table, then redeploy (Deployments → Retry). Use "Add secret" for the two secret rows.
+5. **Check the default URL** `https://reman-portfolio.<account>.workers.dev`: the site loads. `/keystatic` login only works on the custom domain (the app's callback URLs point there), so continue.
+6. **Attach the domain.**
+   1. Cloudflare → Add a domain → `remanbuddhacharya.com.np` (free plan).
+   2. At your `.np` registrar, change the nameservers to the two Cloudflare gives you. Wait until Cloudflare says Active.
+   3. Worker → Settings → Domains & Routes → Add → Custom domain → `remanbuddhacharya.com.np` (and `www` if wanted).
+   Workers custom domains need the domain's DNS on Cloudflare; a plain CNAME at another DNS host does not work.
+7. **Log in:** `https://remanbuddhacharya.com.np/keystatic` → Sign in with GitHub. Upload the CV under Site Settings → Resume, then add posts and albums.
+
+### Troubleshooting
+- Login loops or "callback URL mismatch": GitHub → Settings → Developer settings → GitHub Apps → your app → add `https://remanbuddhacharya.com.np/api/keystatic/github/oauth/callback`.
+- "KEYSTATIC_SECRET must be at least 32 characters": the secret was pasted wrong; copy it again from `.env`.
+- Admin changes do not appear: wait for the Cloudflare build (about 1 minute) and check Deployments for errors.

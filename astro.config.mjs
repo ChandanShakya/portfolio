@@ -6,7 +6,7 @@ import keystatic from '@keystatic/astro';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://reman-portfolio.workers.dev',
+  site: 'https://remanbuddhacharya.com.np',
   adapter: cloudflare({ imageService: 'compile' }),
   session: false,
   integrations: [react(), markdoc(), keystatic(), sitemap()],
